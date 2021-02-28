@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="row login-row">
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <app-notes-list
+        [notesList]="notesList"
+        (removeNotesEvent)="removeNote($event)"
+        (updateNotesEvent)="editNote($event)"
+      ></app-notes-list>
+    </div>
+
+    <div class="col-lg-8 col-md-7 col-sm-12">
+      <div class="p-3">
+        <app-add-note
+          [editNoteDetails]="editNoteDetails"
+          (newNotesEvent)="addNewNote($event)"
+          (updateNotesEvent)="updateNote($event)"
+        ></app-add-note>
+      </div>
+    </div>
+  </div>
+</div>

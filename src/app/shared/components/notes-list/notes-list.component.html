@@ -1,0 +1,22 @@
+<div
+  *ngIf="notesList.length > 0; else noItemsMsg"
+  class="pt-3 pr-3 list-container"
+>
+  <div
+    *ngFor="let list of notesList"
+    (click)="editNote(list)"
+    class="w-100 notes-card p-3 d-flex justify-content-between align-items-center flex-row mb-2"
+  >
+    <div>
+      <h5>{{ list.title }}</h5>
+      <p class="mb-0">{{ list.desc }}</p>
+    </div>
+    <a class="c-pointer" (click)="removeNote(list)"
+      ><img src="../../../../assets/images/close.svg" alt=""
+    /></a>
+  </div>
+</div>
+
+<ng-template #noItemsMsg>
+  <div class="pt-3 pr-3 list-container">No items</div>
+</ng-template>

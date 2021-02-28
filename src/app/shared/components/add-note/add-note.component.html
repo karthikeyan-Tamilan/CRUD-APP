@@ -1,0 +1,60 @@
+<form [formGroup]="noteForm" (ngSubmit)="emitOnSubmit(noteForm)">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="Ex: Complete production deployment"
+      formControlName="title"
+    />
+
+    <div
+      class="error-msg"
+      *ngIf="
+        noteForm.get('title').touched &&
+        noteForm.get('title').hasError('required')
+      "
+    >
+      Please provide a title
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="desc">Description</label>
+    <textarea
+      class="form-control"
+      id="desc"
+      rows="6"
+      formControlName="desc"
+    ></textarea>
+
+    <div
+      class="error-msg"
+      *ngIf="
+        noteForm.get('desc').touched &&
+        noteForm.get('desc').hasError('required')
+      "
+    >
+      Please provide a description
+    </div>
+  </div>
+
+  <button
+    *ngIf="!isUpdate"
+    type="submit"
+    [disabled]="!noteForm.valid"
+    class="btn primary-button float-right pl-5 pr-5 mt-3"
+  >
+    Add
+  </button>
+
+  <button
+    *ngIf="isUpdate"
+    type="submit"
+    [disabled]="!noteForm.valid"
+    class="btn primary-button float-right pl-5 pr-5 mt-3"
+  >
+    Update
+  </button>
+</form>

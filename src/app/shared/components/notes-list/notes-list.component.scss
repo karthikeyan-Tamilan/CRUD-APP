@@ -1,0 +1,15 @@
+.list-container {
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.notes-card {
+  border: 1px solid lightpink;
+
+  &:hover {
+    background-color: lightpink;
+    cursor: pointer;
+    border: none;
+  }
+}

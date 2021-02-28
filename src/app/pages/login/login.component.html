@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <div class="row login-row">
+    <div class="col-lg-4 col-md-5 col-sm-12">
+      <div class="p-3">
+        <div class="d-flex flex-row align-items-center mb-5">
+          <img
+            class="brand-logo"
+            src="../../../assets/images/notes.svg"
+            alt=""
+          />
+          <h3 class="ml-3 font-weight-bold">Notes App</h3>
+        </div>
+
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit(loginForm)"
+          autocomplete="off"
+        >
+          <div class="mb-3">
+            <label for="email" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="name@example.com"
+              formControlName="email"
+              maxlength="25"
+            />
+            <div
+              class="error-msg"
+              *ngIf="
+                loginForm.get('email').touched &&
+                loginForm.get('email').hasError('required')
+              "
+            >
+              Please enter the username
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="********"
+              formControlName="pwd"
+              maxlength="30"
+            />
+
+            <div
+              class="error-msg"
+              *ngIf="
+                loginForm.get('pwd').touched &&
+                loginForm.get('pwd').hasError('required')
+              "
+            >
+              Please enter the password
+            </div>
+          </div>
+
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="defaultCheck1"
+            />
+            <label class="form-check-label" for="defaultCheck1">
+              Keep me logged in
+            </label>
+          </div>
+
+          <button
+            [disabled]="!loginForm.valid"
+            type="button"
+            routerLink="/notes"
+            class="btn primary-button btn-block mt-3"
+          >
+            Login
+          </button>
+
+          <p class="text-center mt-4">
+            Don't have an account? <a class="text-blue c-pointer">Sign up</a>
+          </p>
+          <a class="text-center d-block text-blue c-pointer"
+            >Forgot password?</a
+          >
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-7 col-sm-12" id="bg-section"></div>
+  </div>
+</div>
